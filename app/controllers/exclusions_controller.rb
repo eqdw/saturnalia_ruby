@@ -1,0 +1,2 @@
+class ExclusionsController < ApplicationController
+end
