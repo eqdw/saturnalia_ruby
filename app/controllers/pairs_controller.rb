@@ -1,6 +1,10 @@
 class PairsController < ApplicationController
   before_action :set_pair, only: [:show, :edit, :update, :destroy]
 
+  def dashboard
+
+  end
+
   # GET /pairs
   # GET /pairs.json
   def index
