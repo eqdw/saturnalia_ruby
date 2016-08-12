@@ -11,6 +11,17 @@
     </div>
   <% end %>
 
+  <div>
+    <label for="exclusion[person_one_id]">First Person</label>
+    <%= f.collection_select :person_one_id, Person.order(:name), :id, :name %>
+    <br />
+    <label for="exclusion[person_two_id]">Second Person</label>
+    <%= f.collection_select :person_two_id, Person.order(:name), :id, :name %>
+    <br />
+    <label for="exclusion[reason]">Reason for Exclusion</label>
+    <%= f.text_field :reason %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -1,3 +1,15 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Dashboard</h1>
+
+<% if @pairs.empty? %>
+  <h3> There is no active Coffee Roulette </h3>
+<% else %>
+  <h3> Coffee Roulette for the month of <%= Date::MONTHNAMES[Date.today.month] %> </h3>
+<% end %>
+
+<% @pairs.each do |pair| %>
+  <% if pair.singleton? %>
+    <p> <strong><%= pair.person_one.name %></strong> drew the short straw :( </p>
+  <% else %>
+    <p> <strong><%= pair.person_one.name %></strong> is paired with <strong><%= pair.person_two.name %></strong></p>
+  <% end %>
+<% end %>

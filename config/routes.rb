@@ -1,15 +1,14 @@
 Rails.application.routes.draw do
-  resources :teams
-  resources :people
-  resources :exclusions
-  resources :pairs
-  resources :pairs
   root to: "pairs#dashboard"
   resources :exclusions
   resources :teams
   resources :people
 
   resources :pairs do
-    get :dashboard
+    collection do
+      get  :dashboard,      as: "dashboard"
+      get  :generate_pairs, as: "generate"
+      post :create_pairs,   as: "create"
+    end
   end
 end

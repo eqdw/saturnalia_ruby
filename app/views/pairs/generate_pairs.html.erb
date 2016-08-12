@@ -1,0 +1,11 @@
+<h1>Candidate Pairs</h1>
+
+<h3> Here you can hand-tweak the pairs before they are confirmed for the next coffee roulette </h3>
+
+<%= form_tag(create_pairs_path) do %>
+  <%= text_area_tag(:candidate_pairs, @candidate_pairs_str, rows: 50, cols: 100) %>
+
+  <div class="actions">
+    <%= submit_tag("Spin The Wheel!") %>
+  </div>
+<% end %>

@@ -1,4 +1,10 @@
-<p id="notice"><%= notice %></p>
+<p>
+  Exclude
+  <strong><%= @exclusion.person_one.name %></strong>
+  and
+  <strong><%= @exclusion.person_two.name %></strong>
+  from being matched
+</p>
 
 <%= link_to 'Edit', edit_exclusion_path(@exclusion) %> |
 <%= link_to 'Back', exclusions_path %>

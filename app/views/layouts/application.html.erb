@@ -9,13 +9,15 @@
 <body>
 
   <ul>
-    <li><%= link_to "Dashboard", "/"              %></li>
-    <li><%= link_to "People",     people_path     %></li>
-    <li><%= link_to "Exclusions", exclusions_path %></li>
-    <li><%= link_to "Pairs",      pairs_path      %></li>
-    <li><%= link_to "Spin The Wheel!", ""         %></li>
+    <li><%= link_to "Dashboard",       "/"                 %></li>
+    <li><%= link_to "People",          people_path         %></li>
+    <li><%= link_to "Exclusions",      exclusions_path     %></li>
+    <li><%= link_to "Spin The Wheel!", generate_pairs_path %></li>
   </ul>
 
+<% flash.each do |name, msg| -%>
+  <%= content_tag :p, msg, id: name %>
+<% end -%>
 <%= yield %>
 
 </body>

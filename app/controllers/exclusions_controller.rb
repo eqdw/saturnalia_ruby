@@ -28,7 +28,7 @@ class ExclusionsController < ApplicationController
 
     respond_to do |format|
       if @exclusion.save
-        format.html { redirect_to @exclusion, notice: 'Exclusion was successfully created.' }
+        format.html { redirect_to exclusions_path, notice: 'Exclusion was successfully created.' }
         format.json { render :show, status: :created, location: @exclusion }
       else
         format.html { render :new }
@@ -69,6 +69,6 @@ class ExclusionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def exclusion_params
-      params.fetch(:exclusion, {})
+      params.require(:exclusion).permit(:person_one_id, :person_two_id, :reason)
     end
 end

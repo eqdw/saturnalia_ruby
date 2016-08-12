@@ -2,7 +2,28 @@ class PairsController < ApplicationController
   before_action :set_pair, only: [:show, :edit, :update, :destroy]
 
   def dashboard
+    @pairs = Pair.active
+  end
 
+
+  def generate_pairs
+    @candidate_pairs_str = Pair.generate_candidate_pairs.map do |cp|
+      cp.join(", ")
+    end.join("\n")
+  end
+
+  def create_pairs
+    @candidate_pairs_str = params[:candidate_pairs]
+    pair_strings = params[:candidate_pairs].split("\r\n")
+    arrayed = pair_strings.map{|p| p.split(/[,\s]+/)}
+
+    begin
+      Pair.create_pairs(arrayed)
+      redirect_to dashboard_pairs_path
+    rescue Exception => e
+      flash[:error] = e.message
+      render :generate_pairs
+    end
   end
 
   # GET /pairs

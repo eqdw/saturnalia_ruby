@@ -11,21 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160811191448) do
+ActiveRecord::Schema.define(version: 20160811235726) do
 
   create_table "exclusions", force: :cascade do |t|
     t.integer  "person_one_id"
     t.integer  "person_two_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.string   "reason"
   end
 
   create_table "pairs", force: :cascade do |t|
     t.integer  "person_one_id"
     t.integer  "person_two_id"
-    t.date     "pairing_date"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.boolean  "active",        default: false
   end
 
   create_table "people", force: :cascade do |t|
